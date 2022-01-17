@@ -18,6 +18,20 @@ const LineListItem = () => {
                             <li>L-line A 1,5 - 1 шт.</li>
                             <li>L-line A 3 - 1 шт.</li>
                         </ul>
+
+                            <h2 className={'line-list-item_container-wrap-results-wrapper-h2'}>Блоки питания:</h2>
+                            <ul className={'line-list-item_container-wrap-results-wrapper-modules'}>
+                                <li>БП320 - 1 шт.</li>
+                                <li>БП240 - 1 шт.</li>
+
+                            </ul>
+
+                            <h2 className={'line-list-item_container-wrap-results-wrapper-h2'}>Номиналы резисторов:</h2>
+                            <ul className={'line-list-item_container-wrap-results-wrapper-modules'}>
+                                <li>37 кОм - 1 шт.</li>
+                                <li>27 кОм - 1 шт.</li>
+
+                            </ul>
                         </div>
                  </div>
 

@@ -7,6 +7,12 @@ const LineList = () => {
     return (
         <div className={'line-list_container'}>
              <LineListItem/>
+            <LineListItem/>
+            <LineListItem/>
+            <LineListItem/>
+            <LineListItem/>
+            <LineListItem/>
+
         </div>
        
     )

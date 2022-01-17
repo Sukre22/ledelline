@@ -9,7 +9,11 @@
     justify-content: space-between;
 }
 
-
+.input-container_get {
+    padding: 20px;
+    padding-left: 50px;
+   
+}
 
 .input-container_get-h2 {
     font-size: 16px;
@@ -19,6 +23,25 @@
     font-size: 16px;
     max-width: 30%;
     line-height: 20px;
+    padding: 20px;
+    padding-top: 30px;
+    padding-bottom: 0px;
+}
+
+.input-container_get-area {
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-left: 50px;
+    width: 80px;
+}
+
+.input-container_buttons {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding-right: 50px;
 }
 
 button {

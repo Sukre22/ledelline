@@ -3,16 +3,27 @@ import './line-list.css';
 
 import LineListItem from '../line-list-item/line-list-item.js';
 
-const LineList = () => {
+const LineList = ({posts, onDelete}) => {
+
+    const elements = posts.map((item) => {
+
+        const {id, ...itemProps} = item;
+        return (
+            <>
+                <LineListItem
+                    key={id}
+                    {...itemProps}
+                    onDelete={() => onDelete(id)}
+                />
+
+            </>
+
+        )
+    });
+
     return (
         <div className={'line-list_container'}>
-             <LineListItem/>
-            <LineListItem/>
-            <LineListItem/>
-            <LineListItem/>
-            <LineListItem/>
-            <LineListItem/>
-
+            {elements}
         </div>
        
     )

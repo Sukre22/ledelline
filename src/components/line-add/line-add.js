@@ -1,7 +1,7 @@
 import React from 'react';
 import './line-add.css';
 
-const LineAdd = () => {
+const LineAdd = ({onAdd}) => {
     return (
      <div className={'input-container'}>
          <div className={'input-container_wrap'}>
@@ -14,7 +14,11 @@ const LineAdd = () => {
              </div>
 
              <div className={'input-container_buttons'}>
-                 <button className={'input-container_buttons-first'}>Добавить новую линию</button>
+                 <button type='submit'
+                         className={'input-container_buttons-first'}
+                         onClick={() => onAdd('Hello')}>
+                     Добавить новую линию
+                 </button>
                  <button>Вывести общую спецификацию</button>
              </div>
          </div>

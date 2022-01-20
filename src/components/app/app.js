@@ -11,55 +11,15 @@ export default class App extends Component {
         super(props);
         this.state = {
             data: [
-                {
-                    id: 3,
-                    number: 3,
-                    length: 33,
-                    lineA3: 2,
-                    lineA15: 1,
-                    lineA1: 3,
-                    lineA05: 4,
-                    lineA025: 0,
-                    bp320: 1,
-                    bp240: 2,
-                    bp150: 1
 
-
-                } ,
-                {
-                    id: 2,
-                    number: 3,
-                    length: 33,
-                    lineA3: 2,
-                    lineA15: 1,
-                    lineA1: 3,
-                    lineA05: 4,
-                    lineA025: 0,
-                    bp320: 1,
-                    bp240: 2,
-                    bp150: 1
-
-
-                },
-                {
-                    id: 1,
-                    number: 3,
-                    length: 33,
-                    lineA3: 2,
-                    lineA15: 1,
-                    lineA1: 3,
-                    lineA05: 4,
-                    lineA025: 0,
-                    bp320: 1,
-                    bp240: 2,
-                    bp150: 1
-
-
-                }
 
             ]
         };
         this.deleteItem = this.deleteItem.bind(this);
+        this.addItem = this.addItem.bind(this);
+
+        this.maxId = 1;
+        this.maxNumber = 1;
     }
 
     deleteItem(id) {
@@ -77,11 +37,34 @@ export default class App extends Component {
         });
     }
 
+    addItem(body) {
+        const newItem = {
+            id: this.maxId++,
+            number: this.maxNumber++,
+            length: 33,
+            lineA3: 2,
+            lineA15: 1,
+            lineA1: 3,
+            lineA05: 4,
+            lineA025: 0,
+            bp320: 1,
+            bp240: 2,
+            bp150: 1
+        }
+        this.setState(({data}) => {
+            const newArr = [...data, newItem];
+            return {
+                data: newArr
+            }
+        })
+    }
+
     render() {
         return(
             <div className={'container row'}>
                 <AppHeader/>
-                <LineAdd/>
+                <LineAdd
+                    onAdd={this.addItem}/>
                 <LineList
                     posts={this.state.data}
                     onDelete={this.deleteItem}/>

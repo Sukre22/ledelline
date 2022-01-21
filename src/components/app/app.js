@@ -4,6 +4,7 @@ import './app.css';
 import AppHeader from '../app-header/app-header.js';
 import LineAdd from '../line-add/line-add.js';
 import LineList from '../line-list/line-list.js';
+import LineResults from '../line-results/line-results.js';
 
 
 export default class App extends Component {
@@ -65,6 +66,7 @@ export default class App extends Component {
                 <AppHeader/>
                 <LineAdd
                     onAdd={this.addItem}/>
+                <LineResults/>
                 <LineList
                     posts={this.state.data}
                     onDelete={this.deleteItem}/>

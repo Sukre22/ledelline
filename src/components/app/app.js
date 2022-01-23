@@ -251,12 +251,12 @@ export default class App extends Component {
         const newItem = {
             id: this.maxId++,
             number: this.maxNumber++,
-            length: 33,
+            length: body,
             lineA3: lineFirstRes,
             lineA15: lineSecondRes,
             lineA1: lineThirdRes,
-            lineA05: 4,
-            lineA025: 0,
+            lineA05: lineFourthRes,
+            lineA025: lineFifthRes,
             bp320: BPTarget,
             bp240: 2,
             bp150: 1

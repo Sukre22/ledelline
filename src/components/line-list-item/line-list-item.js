@@ -5,7 +5,7 @@ import './line-list-item.css';
 
 export default class LineListItem extends Component {
     render() {
-        const {length, number, lineA3, lineA15, lineA1, lineA05, lineA025, bp320, bp240, bp150, onDelete} = this.props;
+        const {length, number, lineA3, lineA15, lineA1, lineA05, lineA025, bp, res, onDelete} = this.props;
         return (
             <div className={'line-list-item_container'}>
                 <h2 className={'line-list-item_container-description'}>Линия №{number} - {length} м</h2>
@@ -25,16 +25,15 @@ export default class LineListItem extends Component {
 
                             <h2 className={'line-list-item_container-wrap-results-wrapper-h2'}>Блоки питания:</h2>
                             <ul className={'line-list-item_container-wrap-results-wrapper-modules'}>
-                                <li>БП320 - {bp320} шт.</li>
-                                <li>БП240 - {bp240} шт.</li>
-                                <li>БП150 - {bp150} шт.</li>
+                                <li>{bp}</li>
+
 
                             </ul>
 
                             <h2 className={'line-list-item_container-wrap-results-wrapper-h2'}>Номиналы резисторов:</h2>
                             <ul className={'line-list-item_container-wrap-results-wrapper-modules'}>
-                                <li>37 кОм - 1 шт.</li>
-                                <li>27 кОм - 1 шт.</li>
+                                <li>{res}</li>
+
 
                             </ul>
                         </div>

@@ -106,8 +106,17 @@ export default class App extends Component {
         const BP240 = 5;
         const BP150 = 3.2;
 
+//блоки питания названия
+        const BP320S = 'БП320';
+        const BP240S = 'БП240';
+        const BP150S = 'БП150';
+
 //искомый блок питания
         let BPTarget;
+
+//искомый блок питания строка
+        let BPTargetString;
+
 
 //значение тока на 1м
         const amperage = 0.48;
@@ -119,9 +128,17 @@ export default class App extends Component {
 //длина линии
         let totalLine;
 
-        let generalFunction = function () {
+//плолучаемый объект
+        let resultItem;
 
-            function CalcLampType(a) {
+        let arr = [];
+
+
+        function generalFunction (a) {
+
+
+
+            function CalcLampType() {
 
 
                 if (a < lineFirst) {
@@ -166,9 +183,11 @@ export default class App extends Component {
 
                 lineFifthRes = lineFourthResNext / lineFifth;
 
+                return lineFirstRes, lineFirstResNext, lineSecondRes, lineSecond, lineThirdRes, lineThird, lineFourthRes, lineFourth, lineFifthRes, lineFifth;
+
             }
 
-            CalcLampType(body);
+            CalcLampType();
 
             totalLine = lineFirstRes * lineFirst + lineSecondRes * lineSecond  + lineThirdRes * lineThird  + lineFourthRes * lineFourth + lineFifthRes * lineFifth;
 
@@ -181,17 +200,22 @@ export default class App extends Component {
 
                 amperageValue = totalLine * amperage;
 
+
                 if (amperageValue <= BP150 ) {
-                    BPTarget = BP150;
+                    BPTargetString = BP150S;
+                    return BPTarget = BP150;
                 }
 
                 if  (amperageValue > BP150 && amperageValue <= BP240) {
-                    BPTarget = BP240;
+                    BPTargetString = BP240S;
+                    return BPTarget = BP240;
                 }
 
                 if (amperageValue > BP240 && amperageValue <= BP320) {
-                    BPTarget = BP320;
+                    BPTargetString = BP320S;
+                    return  BPTarget = BP320;
                 }
+
             }
 
 
@@ -205,14 +229,19 @@ export default class App extends Component {
 
                 let closestLeft;
                 let closestRight;
+                let closestTrue;
                 let current;
 
 
                 for (let i = 0; i < resistorsArr.length; i++) {
                     current = resistorsArr[i];
-                    if (current < resistanceValue && (typeof closestLeft === 'undefined' || closestLeft < current)) {
+
+                    if (current === resistanceValue) {
+                        closestRight = current;
+                    }
+                    /*else if (current < resistanceValue && (typeof closestLeft === 'undefined' || closestLeft < current)) {
                         closestLeft = current;
-                    } else if (current > resistanceValue && (typeof closestRight === 'undefined' || closestRight > current)) {
+                    }*/ else if (current > resistanceValue && (typeof closestRight === 'undefined' || closestRight > current)) {
                         closestRight = current;
                     }
                 }
@@ -225,41 +254,129 @@ export default class App extends Component {
                      resistorTrue = closestRight;
                  }*/
 
-                resistorTrue = closestRight;
 
-                //console.log(resistanceValue);
-                // console.log(closestLeft, closestRight);
+
+                //return resistorTrue = closestRight;
+                return resistorTrue = closestRight;
+
+                /*console.log(closestTrue);
+               console.log(closestLeft, closestRight);*/
 
 
             }
             calcResistorType (amperageValue, BPTarget)
 
-            console.log(`L-line A 3,0: ${lineFirstRes}`);
+            /*console.log(`L-line A 3,0: ${lineFirstRes}`);
             console.log(`L-line A 1,5: ${lineSecondRes}`);
             console.log(`L-line A 1: ${lineThirdRes}`);
             console.log(`L-line A 0,5: ${lineFourthRes}`);
             console.log(`L-line A 0,25: ${lineFifthRes}`);
             console.log(`Общая длина линии: ${totalLine}`);
             console.log(`Тип блока питания: ${BPTarget}`);
-            console.log(`Искомый резистор: ${resistorTrue}`);
+            console.log(`Искомый резистор: ${resistorTrue}`);*/
+
+
+            resultItem = {
+                lineA3: lineFirstRes,
+                lineA15: lineSecondRes,
+                lineA1: lineThirdRes,
+                lineA05: lineFourthRes,
+                lineA025: lineFifthRes,
+                BP: [BPTargetString],
+                res: [resistorTrue]
+            }
+
+            // console.log(resultItem);
+
+            arr.push(resultItem);
+
+            // console.log(arr);
+
 
         }
 
-        generalFunction ();
+
+//generalFunction (1);
+
+
+        let b = body;
+        let i;
+
+        for(i = 0; b >= 12; i++) {
+            b = b - 12;
+            generalFunction (12);
+
+        }
+        generalFunction (b);
+
+//console.log(b);
+//console.log(i);
+
+        let filteredArray = arr.filter(value => value.lineA3 > 0 || value.lineA15 > 0 || value.lineA1 > 0 || value.lineA05 > 0 || value.lineA025 > 0);
+
+        console.log(filteredArray);
+
+
+
+        console.log('-----------------------------------------');
+
+
+
+        let resultLineA3 = filteredArray.map(item => item.lineA3).reduce((prev, curr) => prev + curr, 0);
+//console.log(resultLineA3);
+
+        let resultLineA15 = filteredArray.map(item => item.lineA15).reduce((prev, curr) => prev + curr, 0);
+//console.log(resultLineA15);
+
+        let resultLineA1 = filteredArray.map(item => item.lineA1).reduce((prev, curr) => prev + curr, 0);
+//console.log(resultLineA1);
+
+        let resultLineA05 = filteredArray.map(item => item.lineA05).reduce((prev, curr) => prev + curr, 0);
+//console.log(resultLineA05);
+
+        let resultLineA025 = filteredArray.map(item => item.lineA025).reduce((prev, curr) => prev + curr, 0);
+//console.log(resultLineA025);
+
+        let resultBP = filteredArray.map(item => item.BP).reduce((prev, curr) => [...prev,...curr], []);
+//console.log(resultBP);
+
+        let resultRes = filteredArray.map(item => item.res).reduce((prev, curr) => [...prev,...curr], []);
+//console.log(resultRes);
+
+
+
+
+        console.log('-----------------------------------------');
+
+        let LineObject = {
+            lineA3: resultLineA3,
+            lineA15: resultLineA15,
+            lineA1: resultLineA1,
+            lineA05: resultLineA05,
+            lineA025: resultLineA025,
+            BP: resultBP,
+            res: resultRes,
+            lineNum: arr.length
+        }
+
+        let Str = resultBP.join(' - ');
+        let Str2 = resultRes.join(' - ');
+
 
 
         const newItem = {
             id: this.maxId++,
             number: this.maxNumber++,
             length: body,
-            lineA3: lineFirstRes,
-            lineA15: lineSecondRes,
-            lineA1: lineThirdRes,
-            lineA05: lineFourthRes,
-            lineA025: lineFifthRes,
-            bp320: BPTarget,
-            bp240: 2,
-            bp150: 1
+            lineA3: resultLineA3,
+            lineA15: resultLineA15,
+            lineA1: resultLineA1,
+            lineA05: resultLineA05,
+            lineA025: resultLineA025,
+            bp: Str,
+            res: Str2
+
+
         }
         this.setState(({data}) => {
             const newArr = [...data, newItem];

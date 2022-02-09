@@ -5,9 +5,9 @@ import './line-list-item.css';
 
 export default class LineListItem extends Component {
     render() {
-        const {length, number, lineA3, lineA15, lineA1, lineA05, lineA025, bp, res, onDelete, result, result2} = this.props;
+        const {length, number, lineA3, lineA15, lineA1, lineA05, lineA025, bp, res, onDelete} = this.props;
 
-        //const numbers = {БП320: 2, БП150: 3};
+
         const listItems = Object.entries(bp).map(([key, value]) =>
             <li>{key} - {value} шт.</li>
         )

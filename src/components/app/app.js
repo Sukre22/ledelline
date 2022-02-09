@@ -359,8 +359,21 @@ export default class App extends Component {
             lineNum: arr.length
         }
 
-        let Str = resultBP.join(' - ');
-        let Str2 = resultRes.join(' - ');
+        //let Str = resultBP.join(' - ');
+        //let Str2 = resultRes.join(' - ');
+
+
+        let result = resultBP.reduce(function(acc, el) {
+            acc[el] = (acc[el] || 0) + 1;
+            return acc;
+        }, {});
+
+        console.log(result);
+
+        let result2 = resultRes.reduce(function(acc, el) {
+            acc[el] = (acc[el] || 0) + 1;
+            return acc;
+        }, {});
 
 
 
@@ -373,8 +386,8 @@ export default class App extends Component {
             lineA1: resultLineA1,
             lineA05: resultLineA05,
             lineA025: resultLineA025,
-            bp: Str,
-            res: Str2
+            bp: result,
+            res: result2
 
 
         }

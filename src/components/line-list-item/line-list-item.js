@@ -5,7 +5,19 @@ import './line-list-item.css';
 
 export default class LineListItem extends Component {
     render() {
-        const {length, number, lineA3, lineA15, lineA1, lineA05, lineA025, bp, res, onDelete} = this.props;
+        const {length, number, lineA3, lineA15, lineA1, lineA05, lineA025, bp, res, onDelete, result, result2} = this.props;
+
+        //const numbers = {БП320: 2, БП150: 3};
+        const listItems = Object.entries(bp).map(([key, value]) =>
+            <li>{key} - {value} шт.</li>
+        )
+
+        const listItems2 = Object.entries(res).map(([key, value]) =>
+            <li>{key} - {value} шт.</li>
+        );
+
+
+
         return (
             <div className={'line-list-item_container'}>
                 <h2 className={'line-list-item_container-description'}>Линия №{number} - {length} м</h2>
@@ -25,14 +37,14 @@ export default class LineListItem extends Component {
 
                             <h2 className={'line-list-item_container-wrap-results-wrapper-h2'}>Блоки питания:</h2>
                             <ul className={'line-list-item_container-wrap-results-wrapper-modules'}>
-                                <li>{bp}</li>
+                                {listItems}
 
 
                             </ul>
 
                             <h2 className={'line-list-item_container-wrap-results-wrapper-h2'}>Номиналы резисторов:</h2>
                             <ul className={'line-list-item_container-wrap-results-wrapper-modules'}>
-                                <li>{res}</li>
+                                {listItems2}
 
 
                             </ul>

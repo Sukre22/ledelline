@@ -11,10 +11,7 @@ export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: [
-
-
-            ]
+            data: []
         };
         this.deleteItem = this.deleteItem.bind(this);
         this.addItem = this.addItem.bind(this);
@@ -380,17 +377,18 @@ export default class App extends Component {
         const newItem = {
             id: this.maxId++,
             number: this.maxNumber++,
-            length: body,
-            lineA3: resultLineA3,
-            lineA15: resultLineA15,
-            lineA1: resultLineA1,
-            lineA05: resultLineA05,
-            lineA025: resultLineA025,
+            modules: [
+                ['L-line A 3',  resultLineA3],
+                ['L-line A 1,5',  resultLineA15],
+                ['L-line A 1',  resultLineA1],
+                ['L-line A 0,5',  resultLineA05],
+                ['L-line A 0,25',  resultLineA025]
+            ],
             bp: result,
             res: result2
-
-
         }
+
+
         this.setState(({data}) => {
             const newArr = [...data, newItem];
             return {

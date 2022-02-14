@@ -56,7 +56,7 @@ export default class LineAdd extends Component {
 
                             Добавить новую линию
                         </button>
-                        <button>Вывести общую спецификацию</button>
+                        <button type="button">Вывести общую спецификацию</button>
                     </div>
                 </div>
                 <div className={'input-container_number'}>

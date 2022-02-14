@@ -15,10 +15,10 @@ const LineResults = () => {
                     <h2 className={'line-results_container_wrap-first'}>Светодиодные модули:</h2>
                     <ul  className={'line-results_container_wrap-first-ul'}>
                       <li>L-line A 3 - 3 шт.</li>
-                      <li>L-line A 1,5 - 3 шт. шт.</li>
-                      <li>L-line A 1 - 3 шт. шт.</li>
-                      <li>L-line A 0,5 - 3 шт. шт.</li>
-                      <li>L-line A 0,25 - 3 шт. шт.</li>
+                      <li>L-line A 1,5 - 3 шт.</li>
+                      <li>L-line A 1 - 3 шт.</li>
+                      <li>L-line A 0,5 - 3 шт.</li>
+                      <li>L-line A 0,25 - 3 шт.</li>
                     </ul>
                 </div>
                 <div className={'line-results_container_wrap-first'}>

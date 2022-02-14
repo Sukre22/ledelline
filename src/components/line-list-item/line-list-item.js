@@ -5,7 +5,7 @@ import './line-list-item.css';
 
 export default class LineListItem extends Component {
     render() {
-        const {length, number, lineA3, lineA15, lineA1, lineA05, lineA025, bp, res, onDelete} = this.props;
+        const {length, number, lineA3, lineA15, lineA1, lineA05, lineA025, bp, res, onDelete, modules} = this.props;
 
 
         const listItems = Object.entries(bp).map(([key, value]) =>
@@ -15,6 +15,10 @@ export default class LineListItem extends Component {
         const listItems2 = Object.entries(res).map(([key, value]) =>
             <li>{key} кОм - {value} шт.</li>
         );
+
+        const listItems3 = modules.map(([key, value]) =>
+        <li>{key} - {value} шт.</li>
+    );
 
 
 
@@ -28,11 +32,7 @@ export default class LineListItem extends Component {
                         <div className={'line-list-item_container-wrap-results-wrapper'}>
                             <h2 className={'line-list-item_container-wrap-results-wrapper-h2'}>Светодиодные модули:</h2>
                             <ul className={'line-list-item_container-wrap-results-wrapper-modules'}>
-                                <li>L-line A 3 - {lineA3} шт.</li>
-                                <li>L-line A 1,5 - {lineA15} шт.</li>
-                                <li>L-line A 1 - {lineA1} шт.</li>
-                                <li>L-line A 0,5 - {lineA05} шт.</li>
-                                <li>L-line A 0,25 - {lineA025} шт.</li>
+                            {listItems3}
                             </ul>
 
                             <h2 className={'line-list-item_container-wrap-results-wrapper-h2'}>Блоки питания:</h2>

@@ -5,7 +5,7 @@
 
     border: solid 1px;
     border-radius: 20px;
-    display: none;
+    display: flex;
     flex-direction: column;
    
 }
@@ -20,6 +20,7 @@
     margin: 0 auto;
     text-align: center;
     padding: 10px;
+    padding-top: 20px;
 }
 
 .line-results_container_wrap-first {
@@ -37,4 +38,12 @@
 
 .line-results_container_wrap-first-ul {
     font-size: 12px;
+}
+
+.line-list-item_container-wrap-results {
+    height: 300px;
+}
+
+.line-list-item_container-wrap-results-wrapper {
+    height: 250px;
 }

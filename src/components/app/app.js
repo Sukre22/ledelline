@@ -385,8 +385,11 @@ export default class App extends Component {
                 ['L-line A 0,25',  resultLineA025]
             ],
             bp: result,
-            res: result2
+            res: result2,
+            lineLength: body
         }
+
+
 
 
         this.setState(({data}) => {

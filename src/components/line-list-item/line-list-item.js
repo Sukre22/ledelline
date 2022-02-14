@@ -5,7 +5,7 @@ import './line-list-item.css';
 
 export default class LineListItem extends Component {
     render() {
-        const {length, number, lineA3, lineA15, lineA1, lineA05, lineA025, bp, res, onDelete, modules} = this.props;
+        const {number, bp, res, modules, lineLength, onDelete} = this.props;
 
 
         const listItems = Object.entries(bp).map(([key, value]) =>
@@ -26,7 +26,7 @@ export default class LineListItem extends Component {
 
         return (
             <div className={'line-list-item_container'}>
-                <h2 className={'line-list-item_container-description'}>Линия №{number} - {length} м</h2>
+                <h2 className={'line-list-item_container-description'}>Линия №{number} - {lineLength} м</h2>
                 <div className={'line-list-item_container-wrap'}>
 
                     <div className={'line-list-item_container-wrap-results'}>

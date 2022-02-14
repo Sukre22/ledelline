@@ -9,7 +9,7 @@ const LineResults = () => {
 
     return (
         <div className={'line-results_container'}>
-            <h1 className={'line-results_container-h1'}>Спецификация по всем заданным линиям</h1>
+            <h1 className={'line-results_container-h1'}>Спецификация по всем заданным линиям:</h1>
             <div className={'line-results_container_wrap'}>
                 <div className={'line-results_container_wrap-first'}>
                     <h2 className={'line-results_container_wrap-first'}>Светодиодные модули:</h2>
@@ -22,7 +22,7 @@ const LineResults = () => {
                     </ul>
                 </div>
                 <div className={'line-results_container_wrap-first'}>
-                     <h2 className={'line-results_container_wrap-first'}>Блоки питания</h2>
+                     <h2 className={'line-results_container_wrap-first'}>Блоки питания:</h2>
                      <ul className={'line-results_container_wrap-first-ul'}>
                        <li>БП320 - 3 шт.</li>
                        <li>БП240 - 1 шт.</li>

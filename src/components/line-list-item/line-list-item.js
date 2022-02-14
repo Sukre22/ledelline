@@ -16,7 +16,9 @@ export default class LineListItem extends Component {
             <li>{key} кОм - {value} шт.</li>
         );
 
-        const listItems3 = modules.map(([key, value]) =>
+        const filteredModules = modules.filter(item => item[1] > 0);
+
+        const listItems3 = filteredModules.map(([key, value]) =>
         <li>{key} - {value} шт.</li>
     );
 

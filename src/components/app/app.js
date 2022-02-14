@@ -311,11 +311,11 @@ export default class App extends Component {
 
         let filteredArray = arr.filter(value => value.lineA3 > 0 || value.lineA15 > 0 || value.lineA1 > 0 || value.lineA05 > 0 || value.lineA025 > 0);
 
-        console.log(filteredArray);
+       // console.log(filteredArray);
 
 
 
-        console.log('-----------------------------------------');
+       // console.log('-----------------------------------------');
 
 
 
@@ -343,7 +343,7 @@ export default class App extends Component {
 
 
 
-        console.log('-----------------------------------------');
+        //console.log('-----------------------------------------');
 
         let LineObject = {
             lineA3: resultLineA3,
@@ -365,7 +365,7 @@ export default class App extends Component {
             return acc;
         }, {});
 
-        console.log(result);
+       // console.log(result);
 
         let result2 = resultRes.reduce(function(acc, el) {
             acc[el] = (acc[el] || 0) + 1;
@@ -407,7 +407,8 @@ export default class App extends Component {
                 <LineAdd
                     onAdd={this.addItem}
                     posts={this.state.data}/>
-                <LineResults/>
+                <LineResults
+                    posts={this.state.data}/>
                 <LineList
                     posts={this.state.data}
                     onDelete={this.deleteItem}/>

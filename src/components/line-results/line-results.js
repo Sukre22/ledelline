@@ -3,9 +3,14 @@ import './line-results.css';
 
 
 
-const LineResults = () => {
+const LineResults = (posts) => {
 
-   
+console.log(posts);
+
+let generalArray = Object.values(posts);
+let generalArray2 = generalArray.reduce((prev, curr) => [...prev,...curr], []);
+
+console.log(generalArray2);
 
     return (
         <div className={'line-results_container'}>

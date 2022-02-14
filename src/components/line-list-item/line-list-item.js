@@ -13,7 +13,7 @@ export default class LineListItem extends Component {
         )
 
         const listItems2 = Object.entries(res).map(([key, value]) =>
-            <li>{key} - {value} шт.</li>
+            <li>{key} кОм - {value} шт.</li>
         );
 
 

@@ -404,7 +404,8 @@ export default class App extends Component {
             <div className={'container row'}>
                 <AppHeader/>
                 <LineAdd
-                    onAdd={this.addItem}/>
+                    onAdd={this.addItem}
+                    posts={this.state.data}/>
                 <LineResults/>
                 <LineList
                     posts={this.state.data}

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './line-add.css';
 
 export default class LineAdd extends Component {
+  
     constructor(props) {
         super(props);
         this.state = {
@@ -10,6 +11,8 @@ export default class LineAdd extends Component {
         this.onValueChange = this.onValueChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
+
+    
 
     onValueChange(e) {
         this.setState ({
@@ -26,6 +29,8 @@ export default class LineAdd extends Component {
     }
 
     render () {
+        const {posts} = this.props;
+      
         return (
             <form
                 className={'input-container'}
@@ -56,7 +61,7 @@ export default class LineAdd extends Component {
                 </div>
                 <div className={'input-container_number'}>
                     <p className={'input-container_number-p1'}>*длина линии должна быть кратна 0,25 м</p>
-                    <p className={'input-container_number-p2'}>Колличество линий: 0</p>
+                    <p className={'input-container_number-p2'}>Колличество линий: {posts.length}</p>
                 </div>
 
 

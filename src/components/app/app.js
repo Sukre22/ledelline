@@ -365,7 +365,7 @@ export default class App extends Component {
             return acc;
         }, {});
 
-       // console.log(result);
+      // console.log(result);
 
         let result2 = resultRes.reduce(function(acc, el) {
             acc[el] = (acc[el] || 0) + 1;
@@ -386,6 +386,8 @@ export default class App extends Component {
             ],
             bp: result,
             res: result2,
+            bp2: resultBP,
+            res2: resultRes,
             lineLength: body
         }
 

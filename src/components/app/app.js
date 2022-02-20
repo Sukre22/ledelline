@@ -36,7 +36,9 @@ export default class App extends Component {
     }
 
     addItem(body) {
-        // номенклатура светильников по длине
+
+
+       // номенклатура светильников по длине
         const lineFirst = 3;
         const lineSecond = 1.5;
         const lineThird = 1;

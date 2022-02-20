@@ -7,8 +7,19 @@
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-   
 }
+
+.line-results_container_disabled {
+    max-width: 900px;
+    width: 100%;
+    margin: 0px auto;
+
+    border: solid 1px;
+    border-radius: 20px;
+    display: none;
+    flex-direction: column;
+}
+
 
 .line-results_container_wrap {
     display: flex;

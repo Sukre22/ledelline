@@ -33,6 +33,14 @@
     margin-left: 50px;
 }
 
+.input-container_get-h2-1 {
+    margin-top: 24px;
+    font-size: 16px;
+    margin-left: 50px;
+    color: red;
+
+}
+
 .input-container_description {
     font-size: 16px;
     max-width: 27%;

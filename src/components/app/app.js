@@ -11,13 +11,29 @@ export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            important: false
         };
+
+
+
+
+
         this.deleteItem = this.deleteItem.bind(this);
         this.addItem = this.addItem.bind(this);
+        this.onResults = this.onResults.bind(this);
 
         this.maxId = 1;
         this.maxNumber = 1;
+    }
+
+    onResults() {
+        this.setState(({important}) => ({
+            important: !important
+
+        }))
+        //console.log('hello');
+        console.log(this.state.important);
     }
 
     deleteItem(id) {
@@ -405,14 +421,20 @@ export default class App extends Component {
     }
 
     render() {
+       // console.log(this.state.important);
         return(
             <div className={'container row'}>
                 <AppHeader/>
                 <LineAdd
                     onAdd={this.addItem}
-                    posts={this.state.data}/>
+                    posts={this.state.data}
+                    onResultsChange={this.onResults}
+                    onResultsChange1={this.state.important}/>
                 <LineResults
-                    posts={this.state.data}/>
+                    posts={this.state.data}
+                    onResultsChange1={this.state.important}
+                />
+
                 <LineList
                     posts={this.state.data}
                     onDelete={this.deleteItem}/>

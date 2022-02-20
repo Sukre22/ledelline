@@ -10,6 +10,7 @@ export default class LineAdd extends Component {
         }
         this.onValueChange = this.onValueChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+
     }
 
     
@@ -28,9 +29,18 @@ export default class LineAdd extends Component {
         });
     }
 
+
+
     render () {
-        const {posts} = this.props;
-      
+        const {posts, onResultsChange, onResultsChange1} = this.props;
+
+
+      let buttonColor = 'input-container_get-h2'
+        if (onResultsChange1 === true) {
+            buttonColor = 'input-container_get-h2-1';
+            console.log(this.state.important);
+        }
+
         return (
             <form
                 className={'input-container'}
@@ -41,7 +51,7 @@ export default class LineAdd extends Component {
                         <p> Внимание! Длина непрерывной линии не должна превышать 12 м и должна быть кратна 0,25 м.</p>
                     </div>
                     <div className={'input-container_get'}>
-                        <h2 className={'input-container_get-h2'}>Введите длину линии (м):</h2>
+                        <h2 className={buttonColor}>Введите длину линии (м):</h2>
                         <input className={'input-container_get-area'}
                                type="text"
                                placeholder='10.25'
@@ -56,7 +66,7 @@ export default class LineAdd extends Component {
 
                             Добавить новую линию
                         </button>
-                        <button type="button">Вывести общую спецификацию</button>
+                        <button type="button" onClick={onResultsChange} >Вывести общую спецификацию</button>
                     </div>
                 </div>
                 <div className={'input-container_number'}>

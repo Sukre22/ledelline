@@ -421,7 +421,7 @@ export default class App extends Component {
     }
 
     render() {
-       // console.log(this.state.important);
+
         return(
             <div className={'container row'}>
                 <AppHeader/>

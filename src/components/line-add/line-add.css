@@ -118,6 +118,14 @@ p {
     margin-right: 325px;
 }
 
+.input-container_number-p2-mistake {
+    margin: 0px;
+    padding: 0px;
+    margin-bottom: 20px;
+    margin-right: 325px;
+    color: #DE1326;
+}
+
  .input-container_number-p1 {
      margin: 0px;
      padding: 0px;

@@ -60,6 +60,10 @@ const resultListItems = Object.entries(resultArrayBP).map(([key, value]) =>
         classNames = 'line-results_container_disabled';
     }
 
+    if (posts.length === 0) {
+        classNames = 'line-results_container_disabled';
+    }
+
 
 
 

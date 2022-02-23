@@ -12,7 +12,8 @@ export default class App extends Component {
         super(props);
         this.state = {
             data: [],
-            important: false
+            important: false,
+            clear: false
         };
 
 
@@ -23,18 +24,34 @@ export default class App extends Component {
         this.addItem = this.addItem.bind(this);
         this.onResults = this.onResults.bind(this);
 
+
         this.maxId = 1;
         this.maxNumber = 1;
     }
 
-    onResults() {
+    onResults(e) {
+
+        if (this.state.data.length === 0) {
+            this.setState(({clear}) => ({
+                clear: true
+
+            }))}
+            else {
+                this.setState(({clear}) => ({
+                    clear: false
+
+                }))
+            }
+
+
         this.setState(({important}) => ({
             important: !important
 
         }))
-        //console.log('hello');
-        console.log(this.state.important);
     }
+
+
+
 
     deleteItem(id) {
         this.setState(({data}) => {
@@ -52,6 +69,13 @@ export default class App extends Component {
     }
 
     addItem(body) {
+
+       if (this.state.data.length === 0) {
+            this.setState(({clear}) => ({
+                clear: false
+
+            }))}
+
 
 
        // номенклатура светильников по длине
@@ -429,10 +453,12 @@ export default class App extends Component {
                     onAdd={this.addItem}
                     posts={this.state.data}
                     onResultsChange={this.onResults}
-                    onResultsChange1={this.state.important}/>
+                    onResultsChange1={this.state.important}
+                    onClear={this.state.clear}/>
                 <LineResults
                     posts={this.state.data}
                     onResultsChange1={this.state.important}
+
                 />
 
                 <LineList

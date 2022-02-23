@@ -7,11 +7,15 @@ export default class LineAdd extends Component {
         super(props);
         this.state = {
             text: ''
+
         }
         this.onValueChange = this.onValueChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
+
     }
+
+
 
     
 
@@ -32,8 +36,12 @@ export default class LineAdd extends Component {
 
 
     render () {
-        const {posts, onResultsChange} = this.props;
+        const {posts, onResultsChange, onClear} = this.props;
 
+        let classNames2 = 'input-container_number-p2';
+        if (onClear === true) {
+            classNames2 = 'input-container_number-p2-mistake';
+        }
 
 
 
@@ -62,12 +70,12 @@ export default class LineAdd extends Component {
 
                             Добавить новую линию
                         </button>
-                        <button type="button" onClick={onResultsChange} >Показать/скрыть общую спецификацию</button>
+                        <button type="button" onClick={onResultsChange}>Показать/скрыть общую спецификацию</button>
                     </div>
                 </div>
                 <div className={'input-container_number'}>
                     <p className={'input-container_number-p1'}>*длина линии должна быть кратна 0,25 м</p>
-                    <p className={'input-container_number-p2'}>Количество линий: {posts.length}</p>
+                    <p className={classNames2}>Количество линий: {posts.length}</p>
                 </div>
 
 

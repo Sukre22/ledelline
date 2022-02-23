@@ -13,7 +13,8 @@ export default class App extends Component {
         this.state = {
             data: [],
             important: false,
-            clear: false
+            clear: false,
+            mistakes: false
         };
 
 
@@ -70,11 +71,10 @@ export default class App extends Component {
 
     addItem(body) {
 
-       if (this.state.data.length === 0) {
-            this.setState(({clear}) => ({
-                clear: false
 
-            }))}
+
+
+
 
 
 
@@ -173,275 +173,275 @@ export default class App extends Component {
         let arr = [];
 
 
-        function generalFunction (a) {
+        if (+body < 0.25 || body === NaN || body === undefined || +body > 1000 || ((+body % 0.25) > 0) || isNaN(body) === true) {
+            this.setState(({mistakes}) => ({
+                mistakes: true
+
+            }))
+        }
+        else {
+
+            this.setState(({mistakes}) => ({
+                mistakes: false
+
+            }))
+
+
+            function generalFunction (a) {
 
 
 
-            function CalcLampType() {
+                function CalcLampType() {
 
 
-                if (a < lineFirst) {
-                    lineFirstRes = 0;
-                    lineFirstResNext = a;
-                }
-
-                else {
-                    lineFirstResNext = a % lineFirst;
-                    lineFirstRes = (a - lineFirstResNext ) / lineFirst;
-                }
-
-                if (lineFirstResNext < lineSecond ) {
-                    lineSecondRes = 0;
-                    lineSecondResNext = lineFirstResNext ;
-                }
-
-                else {
-                    lineSecondResNext = lineFirstResNext % lineSecond;
-                    lineSecondRes = (lineFirstResNext  - lineSecondResNext ) / lineSecond;
-                }
-
-                if (lineSecondResNext < lineThird) {
-                    lineThirdRes = 0;
-                    lineThirdResNext = lineSecondResNext  ;
-                }
-
-                else {
-                    lineThirdResNext = lineSecondResNext % lineThird ;
-                    lineThirdRes = (lineSecondResNext  - lineThirdResNext  ) / lineThird;
-                }
-
-                if (lineThirdResNext < lineFourth) {
-                    lineFourthRes = 0;
-                    lineFourthResNext = lineThirdResNext  ;
-                }
-
-                else {
-                    lineFourthResNext = lineThirdResNext % lineFourth;
-                    lineFourthRes = (lineThirdResNext - lineFourthResNext ) / lineFourth;
-                }
-
-                lineFifthRes = lineFourthResNext / lineFifth;
-
-                return lineFirstRes, lineFirstResNext, lineSecondRes, lineSecond, lineThirdRes, lineThird, lineFourthRes, lineFourth, lineFifthRes, lineFifth;
-
-            }
-
-            CalcLampType();
-
-            totalLine = lineFirstRes * lineFirst + lineSecondRes * lineSecond  + lineThirdRes * lineThird  + lineFourthRes * lineFourth + lineFifthRes * lineFifth;
-
-
-
-
-
-
-            function calcBPType (totalLine) {
-
-                amperageValue = totalLine * amperage;
-
-
-                if (amperageValue <= BP150 ) {
-                    BPTargetString = BP150S;
-                    return BPTarget = BP150;
-                }
-
-                if  (amperageValue > BP150 && amperageValue <= BP240) {
-                    BPTargetString = BP240S;
-                    return BPTarget = BP240;
-                }
-
-                if (amperageValue > BP240 && amperageValue <= BP320) {
-                    BPTargetString = BP320S;
-                    return  BPTarget = BP320;
-                }
-
-            }
-
-
-
-            calcBPType (totalLine);
-
-
-            function calcResistorType (amperageValue, BPTarget) {
-
-                let resistanceValue = amperageValue / BPTarget * 100;
-
-                let closestLeft;
-                let closestRight;
-                let closestTrue;
-                let current;
-
-
-                for (let i = 0; i < resistorsArr.length; i++) {
-                    current = resistorsArr[i];
-
-                    if (current === resistanceValue) {
-                        closestRight = current;
+                    if (a < lineFirst) {
+                        lineFirstRes = 0;
+                        lineFirstResNext = a;
                     }
-                    /*else if (current < resistanceValue && (typeof closestLeft === 'undefined' || closestLeft < current)) {
-                        closestLeft = current;
-                    }*/ else if (current > resistanceValue && (typeof closestRight === 'undefined' || closestRight > current)) {
-                        closestRight = current;
+
+                    else {
+                        lineFirstResNext = a % lineFirst;
+                        lineFirstRes = (a - lineFirstResNext ) / lineFirst;
                     }
+
+                    if (lineFirstResNext < lineSecond ) {
+                        lineSecondRes = 0;
+                        lineSecondResNext = lineFirstResNext ;
+                    }
+
+                    else {
+                        lineSecondResNext = lineFirstResNext % lineSecond;
+                        lineSecondRes = (lineFirstResNext  - lineSecondResNext ) / lineSecond;
+                    }
+
+                    if (lineSecondResNext < lineThird) {
+                        lineThirdRes = 0;
+                        lineThirdResNext = lineSecondResNext  ;
+                    }
+
+                    else {
+                        lineThirdResNext = lineSecondResNext % lineThird ;
+                        lineThirdRes = (lineSecondResNext  - lineThirdResNext  ) / lineThird;
+                    }
+
+                    if (lineThirdResNext < lineFourth) {
+                        lineFourthRes = 0;
+                        lineFourthResNext = lineThirdResNext  ;
+                    }
+
+                    else {
+                        lineFourthResNext = lineThirdResNext % lineFourth;
+                        lineFourthRes = (lineThirdResNext - lineFourthResNext ) / lineFourth;
+                    }
+
+                    lineFifthRes = lineFourthResNext / lineFifth;
+
+                    return lineFirstRes, lineFirstResNext, lineSecondRes, lineSecond, lineThirdRes, lineThird, lineFourthRes, lineFourth, lineFifthRes, lineFifth;
+
                 }
 
-                /* if ((resistanceValue - closestLeft) < (closestRight - resistanceValue)) {
-                     resistorTrue = closestLeft;
-                 }
+                CalcLampType();
 
-                 else {
-                     resistorTrue = closestRight;
-                 }*/
+                totalLine = lineFirstRes * lineFirst + lineSecondRes * lineSecond  + lineThirdRes * lineThird  + lineFourthRes * lineFourth + lineFifthRes * lineFifth;
 
 
 
-                //return resistorTrue = closestRight;
-                return resistorTrue = closestRight;
 
-                /*console.log(closestTrue);
-               console.log(closestLeft, closestRight);*/
+
+
+                function calcBPType (totalLine) {
+
+                    amperageValue = totalLine * amperage;
+
+
+                    if (amperageValue <= BP150 ) {
+                        BPTargetString = BP150S;
+                        return BPTarget = BP150;
+                    }
+
+                    if  (amperageValue > BP150 && amperageValue <= BP240) {
+                        BPTargetString = BP240S;
+                        return BPTarget = BP240;
+                    }
+
+                    if (amperageValue > BP240 && amperageValue <= BP320) {
+                        BPTargetString = BP320S;
+                        return  BPTarget = BP320;
+                    }
+
+                }
+
+
+
+                calcBPType (totalLine);
+
+
+                function calcResistorType (amperageValue, BPTarget) {
+
+                    let resistanceValue = amperageValue / BPTarget * 100;
+
+
+                    let closestRight;
+                    let current;
+
+
+                    for (let i = 0; i < resistorsArr.length; i++) {
+                        current = resistorsArr[i];
+
+                        if (current === resistanceValue) {
+                            closestRight = current;
+                        }
+
+                        else if (current > resistanceValue && (typeof closestRight === 'undefined' || closestRight > current)) {
+                            closestRight = current;
+                        }
+                    }
+
+
+                    return resistorTrue = closestRight;
+
+
+
+
+                }
+                calcResistorType (amperageValue, BPTarget)
+
+
+
+
+                resultItem = {
+                    lineA3: lineFirstRes,
+                    lineA15: lineSecondRes,
+                    lineA1: lineThirdRes,
+                    lineA05: lineFourthRes,
+                    lineA025: lineFifthRes,
+                    BP: [BPTargetString],
+                    res: [resistorTrue]
+                }
+
+
+
+                arr.push(resultItem);
+
+
 
 
             }
-            calcResistorType (amperageValue, BPTarget)
-
-            /*console.log(`L-line A 3,0: ${lineFirstRes}`);
-            console.log(`L-line A 1,5: ${lineSecondRes}`);
-            console.log(`L-line A 1: ${lineThirdRes}`);
-            console.log(`L-line A 0,5: ${lineFourthRes}`);
-            console.log(`L-line A 0,25: ${lineFifthRes}`);
-            console.log(`Общая длина линии: ${totalLine}`);
-            console.log(`Тип блока питания: ${BPTarget}`);
-            console.log(`Искомый резистор: ${resistorTrue}`);*/
 
 
-            resultItem = {
-                lineA3: lineFirstRes,
-                lineA15: lineSecondRes,
-                lineA1: lineThirdRes,
-                lineA05: lineFourthRes,
-                lineA025: lineFifthRes,
-                BP: [BPTargetString],
-                res: [resistorTrue]
+
+
+
+            let b = body;
+            let i;
+
+            for(i = 0; b >= 12; i++) {
+                b = b - 12;
+                generalFunction (12);
+
+            }
+            generalFunction (b);
+
+
+
+            let filteredArray = arr.filter(value => value.lineA3 > 0 || value.lineA15 > 0 || value.lineA1 > 0 || value.lineA05 > 0 || value.lineA025 > 0);
+
+
+
+
+
+            let resultLineA3 = filteredArray.map(item => item.lineA3).reduce((prev, curr) => prev + curr, 0);
+
+
+            let resultLineA15 = filteredArray.map(item => item.lineA15).reduce((prev, curr) => prev + curr, 0);
+
+
+            let resultLineA1 = filteredArray.map(item => item.lineA1).reduce((prev, curr) => prev + curr, 0);
+
+
+            let resultLineA05 = filteredArray.map(item => item.lineA05).reduce((prev, curr) => prev + curr, 0);
+
+
+            let resultLineA025 = filteredArray.map(item => item.lineA025).reduce((prev, curr) => prev + curr, 0);
+
+
+            let resultBP = filteredArray.map(item => item.BP).reduce((prev, curr) => [...prev,...curr], []);
+
+
+            let resultRes = filteredArray.map(item => item.res).reduce((prev, curr) => [...prev,...curr], []);
+
+
+
+
+
+
+
+            let LineObject = {
+                lineA3: resultLineA3,
+                lineA15: resultLineA15,
+                lineA1: resultLineA1,
+                lineA05: resultLineA05,
+                lineA025: resultLineA025,
+                BP: resultBP,
+                res: resultRes,
+                lineNum: arr.length
             }
 
-            // console.log(resultItem);
-
-            arr.push(resultItem);
-
-            // console.log(arr);
-
-
-        }
-
-
-//generalFunction (1);
-
-
-        let b = body;
-        let i;
-
-        for(i = 0; b >= 12; i++) {
-            b = b - 12;
-            generalFunction (12);
-
-        }
-        generalFunction (b);
-
-//console.log(b);
-//console.log(i);
-
-        let filteredArray = arr.filter(value => value.lineA3 > 0 || value.lineA15 > 0 || value.lineA1 > 0 || value.lineA05 > 0 || value.lineA025 > 0);
-
-       // console.log(filteredArray);
 
 
 
-       // console.log('-----------------------------------------');
+            let result = resultBP.reduce(function(acc, el) {
+                acc[el] = (acc[el] || 0) + 1;
+                return acc;
+            }, {});
 
 
 
-        let resultLineA3 = filteredArray.map(item => item.lineA3).reduce((prev, curr) => prev + curr, 0);
-//console.log(resultLineA3);
-
-        let resultLineA15 = filteredArray.map(item => item.lineA15).reduce((prev, curr) => prev + curr, 0);
-//console.log(resultLineA15);
-
-        let resultLineA1 = filteredArray.map(item => item.lineA1).reduce((prev, curr) => prev + curr, 0);
-//console.log(resultLineA1);
-
-        let resultLineA05 = filteredArray.map(item => item.lineA05).reduce((prev, curr) => prev + curr, 0);
-//console.log(resultLineA05);
-
-        let resultLineA025 = filteredArray.map(item => item.lineA025).reduce((prev, curr) => prev + curr, 0);
-//console.log(resultLineA025);
-
-        let resultBP = filteredArray.map(item => item.BP).reduce((prev, curr) => [...prev,...curr], []);
-//console.log(resultBP);
-
-        let resultRes = filteredArray.map(item => item.res).reduce((prev, curr) => [...prev,...curr], []);
-//console.log(resultRes);
+            let result2 = resultRes.reduce(function(acc, el) {
+                acc[el] = (acc[el] || 0) + 1;
+                return acc;
+            }, {});
 
 
 
-
-        //console.log('-----------------------------------------');
-
-        let LineObject = {
-            lineA3: resultLineA3,
-            lineA15: resultLineA15,
-            lineA1: resultLineA1,
-            lineA05: resultLineA05,
-            lineA025: resultLineA025,
-            BP: resultBP,
-            res: resultRes,
-            lineNum: arr.length
-        }
-
-        //let Str = resultBP.join(' - ');
-        //let Str2 = resultRes.join(' - ');
-
-
-        let result = resultBP.reduce(function(acc, el) {
-            acc[el] = (acc[el] || 0) + 1;
-            return acc;
-        }, {});
-
-      // console.log(result);
-
-        let result2 = resultRes.reduce(function(acc, el) {
-            acc[el] = (acc[el] || 0) + 1;
-            return acc;
-        }, {});
-
-
-
-        const newItem = {
-            id: this.maxId++,
-            number: this.maxNumber++,
-            modules: [
-                ['L-line A 3',  resultLineA3],
-                ['L-line A 1,5',  resultLineA15],
-                ['L-line A 1',  resultLineA1],
-                ['L-line A 0,5',  resultLineA05],
-                ['L-line A 0,25',  resultLineA025]
-            ],
-            bp: result,
-            res: result2,
-            bp2: resultBP,
-            res2: resultRes,
-            lineLength: body
-        }
-
-
-
-
-        this.setState(({data}) => {
-            const newArr = [...data, newItem];
-            return {
-                data: newArr
+             const newItem = {
+                id: this.maxId++,
+                number: this.maxNumber++,
+                modules: [
+                    ['L-line A 3',  resultLineA3],
+                    ['L-line A 1,5',  resultLineA15],
+                    ['L-line A 1',  resultLineA1],
+                    ['L-line A 0,5',  resultLineA05],
+                    ['L-line A 0,25',  resultLineA025]
+                ],
+                bp: result,
+                res: result2,
+                bp2: resultBP,
+                res2: resultRes,
+                lineLength: body
             }
-        })
+            this.setState(({data}) => {
+                const newArr = [...data, newItem];
+                return {
+                    data: newArr
+                }
+            })
+        }
+
+
+
+
+        if (this.state.data.length === 0) {
+            this.setState(({clear}) => ({
+                clear: false
+
+            }))
+        }
+
+
+
+
+
     }
 
     render() {
@@ -454,7 +454,8 @@ export default class App extends Component {
                     posts={this.state.data}
                     onResultsChange={this.onResults}
                     onResultsChange1={this.state.important}
-                    onClear={this.state.clear}/>
+                    onClear={this.state.clear}
+                    onMistakes={this.state.mistakes}/>
                 <LineResults
                     posts={this.state.data}
                     onResultsChange1={this.state.important}

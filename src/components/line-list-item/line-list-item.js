@@ -7,20 +7,28 @@ export default class LineListItem extends Component {
     render() {
         const {number, bp, res, modules, lineLength, onDelete} = this.props;
 
+        
 
         const listItems = Object.entries(bp).map(([key, value]) =>
             <li>{key} - {value} шт.</li>
         )
+        
+        const filteredres = Object.entries(res).filter(item => item[0] > 0);
 
-        const listItems2 = Object.entries(res).map(([key, value]) =>
+        const listItems2 = filteredres.map(([key, value]) =>
             <li>{key} кОм - {value} шт.</li>
         );
+
+       
+       
 
         const filteredModules = modules.filter(item => item[1] > 0);
 
         const listItems3 = filteredModules.map(([key, value]) =>
         <li>{key} - {value} шт.</li>
     );
+
+  
 
 
 

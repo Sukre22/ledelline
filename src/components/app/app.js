@@ -284,9 +284,15 @@ export default class App extends Component {
                     let closestRight;
                     let current;
 
+                 
+
 
                     for (let i = 0; i < resistorsArr.length; i++) {
+
                         current = resistorsArr[i];
+
+                        
+                        
 
                         if (current === resistanceValue) {
                             closestRight = current;
@@ -297,13 +303,25 @@ export default class App extends Component {
                         }
                     }
 
+                    if (closestRight === 100) {
 
-                    return resistorTrue = closestRight;
+                        return resistorTrue = 0;
+
+                    }
+
+                    else {
+
+                        return resistorTrue = closestRight;
+
+                    }
 
 
-
+                    
 
                 }
+
+
+                
                 calcResistorType (amperageValue, BPTarget)
 
 

@@ -59,13 +59,13 @@ export default class LineAdd extends Component {
                 >
                     <div className={'input-container_wrap'}>
                         <div className={'input-container_description'}>
-                            <p> Внимание! Длина непрерывной линии не должна превышать 12 м и должна быть кратна 0,25 м.</p>
+                            <p> Внимание! Длина непрерывной линии не должна превышать 12 м и должна быть кратна 0.25 м.</p>
                         </div>
                         <div className={'input-container_get'}>
                             <h2 className={'input-container_get-h2'}>Введите длину линии (м):</h2>
                             <input className={classNames3}
                                    type="text"
-                                   placeholder='10.25'
+                                   placeholder='10.75'
                                    onChange={this.onValueChange}
                                    value={this.state.text}
                             />
@@ -81,7 +81,7 @@ export default class LineAdd extends Component {
                         </div>
                     </div>
                     <div className={'input-container_number'}>
-                        <p className={'input-container_number-p1'}>*длина линии должна быть кратна 0,25 м</p>
+                        <p className={'input-container_number-p1'}>*длина линии должна быть кратна 0.25 м</p>
                         <p className={classNames2}>Количество линий: {posts.length}</p>
 
                     </div>

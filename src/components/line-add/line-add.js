@@ -48,6 +48,16 @@ export default class LineAdd extends Component {
             classNames3 = 'input-container_get-area-red' ;
         }
 
+        let classNames4 = 'input-container_number-p1';
+        if (onMistakes === true) {
+            classNames4 = 'input-container_number-p1-off' ;
+        }
+
+        let classNames5 = 'input-container_number-p3';
+        if (onMistakes === true) {
+            classNames5 = 'input-container_number-p3-on' ;
+        }
+
 
 
 
@@ -59,7 +69,7 @@ export default class LineAdd extends Component {
                 >
                     <div className={'input-container_wrap'}>
                         <div className={'input-container_description'}>
-                            <p> Внимание! Длина непрерывной линии не должна превышать 12 м и должна быть кратна 0.25 м.</p>
+                            <p> Внимание! Длина непрерывной линии не должна превышать 12 м и должна быть кратна 0ю25 м.</p>
                         </div>
                         <div className={'input-container_get'}>
                             <h2 className={'input-container_get-h2'}>Введите длину линии (м):</h2>
@@ -81,7 +91,8 @@ export default class LineAdd extends Component {
                         </div>
                     </div>
                     <div className={'input-container_number'}>
-                        <p className={'input-container_number-p1'}>*длина линии должна быть кратна 0.25 м</p>
+                        <p className={classNames4}>*длина линии должна быть кратна 0,25 м</p>
+                        <p className={classNames5}>*введены некорректные данные</p>
                         <p className={classNames2}>Количество линий: {posts.length}</p>
 
                     </div>

@@ -63,7 +63,17 @@
     width: 80px;
     height: 50px;
     outline: none;
+   
 
+}
+
+.input-container_get-area::placeholder {
+   
+    opacity: .2;
+}
+
+.input-container_get-area-red::placeholder {
+    opacity: .2;
 }
 
 .input-container_get-area-red {
@@ -144,10 +154,36 @@ p {
      margin: 0px;
      padding: 0px;
      padding-left: 20px;
-
-
-
+     
 }
+
+.input-container_number-p1-off {
+    margin: 0px;
+    padding: 0px;
+    padding-left: 20px;
+    display: none;
+    
+}
+
+.input-container_number-p3 {
+    margin: 0px;
+    padding: 0px;
+    padding-left: 20px;
+    color: #DE1326;
+    display: none;
+    
+}
+
+.input-container_number-p3-on {
+    margin: 0px;
+    padding: 0px;
+    padding-left: 20px;
+    color: #DE1326;
+    
+    
+}
+
+
 
 
 

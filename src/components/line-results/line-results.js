@@ -51,7 +51,12 @@ const resultListItems = Object.entries(resultArrayBP).map(([key, value]) =>
         acc[el] = (acc[el] || 0) + 1;
         return acc;
     }, {});
-    const resultListItems2 = Object.entries(resultArrayRes).map(([key, value]) =>
+
+   
+
+   const filteredResultListItems2 = Object.entries(resultArrayRes).filter(item => item[0] > 0);
+
+    const resultListItems2 = filteredResultListItems2.map(([key, value]) =>
         <li>{key} кОм - {value} шт.</li>
     )
 

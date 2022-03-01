@@ -1,5 +1,5 @@
 .input-container {
-    max-width: 900px;
+    min-width: 900px;
     width: 100%;
     margin: 20px auto;
 

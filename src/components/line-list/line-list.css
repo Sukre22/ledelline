@@ -1,5 +1,5 @@
 .line-list_container {
-    max-width: 900px;
+    min-width: 900px;
     width: 100%;
     display: flex;
     justify-content: center;

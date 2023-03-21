@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/ledelline/static/css/main.03032ab1.css",
-    "main.js": "/ledelline/static/js/main.17877db2.js",
+    "main.js": "/ledelline/static/js/main.8d101c19.js",
     "index.html": "/ledelline/index.html",
     "main.03032ab1.css.map": "/ledelline/static/css/main.03032ab1.css.map",
-    "main.17877db2.js.map": "/ledelline/static/js/main.17877db2.js.map"
+    "main.8d101c19.js.map": "/ledelline/static/js/main.8d101c19.js.map"
   },
   "entrypoints": [
     "static/css/main.03032ab1.css",
-    "static/js/main.17877db2.js"
+    "static/js/main.8d101c19.js"
   ]
 }
